@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Closer_Sql.MainPage">
+
+    <ScrollView>
+        <Grid  RowDefinitions="Auto ,Auto , Auto">
+            <StackLayout Orientation="Vertical" Grid.Row="0">
+                <Entry Placeholder="Enter the id" x:Name="UserId"/>
+                <Entry Placeholder="Enter the Title" x:Name="UserTitle"/>
+                <Entry Placeholder="Enter the Body" x:Name="UserBody"/>
+            </StackLayout>
+
+            
+            <Button Text="DB 연결 확인 버튼" Grid.Row="1" Clicked="Button_Clicked"/>
+
+
+            <Grid  Grid.Row ="2"  RowDefinitions="Auto,Auto"  ColumnDefinitions="*,*" >
+                <Button Grid.Row="0" Grid.Column="0" Text="조회" x:Name="getbutton" Clicked ="getbutton_Clicked"/>
+                <Button Grid.Row="0" Grid.Column="1"  Text="삽입 및 저장" x:Name="postbutton" Clicked ="postbutton_Clicked"/>
+                <Button Grid.Row="1" Grid.Column="0"  Text="업데이트" x:Name="update_button" Clicked ="update_button_Clicked"/>
+                <Button Grid.Row="1" Grid.Column="1"  Text="삭제" x:Name="delbutton" Clicked="delbutton_Clicked"/>
+            </Grid>
+            
+            
+            <ListView Grid.Row="3" x:Name="MyListView" HasUnevenRows="True" Footer="">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+                                <Label Text="{Binding Id}" TextColor="Black"></Label>
+                                <Label Grid.Row="1" Text="{Binding Title}" TextColor="Black" ></Label>
+                                <Label Grid.Row="2" Text="{Binding Body}" TextColor="Black" ></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            
+        </Grid>
+    </ScrollView>
+</ContentPage>
